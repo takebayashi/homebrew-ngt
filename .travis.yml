@@ -1,0 +1,15 @@
+language: ruby
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode10.1
+    - os: osx
+      osx_image: xcode10
+    - os: osx
+      osx_image: xcode9.4
+install:
+  - brew update
+script:
+  - brew audit --strict ./*.rb
+  - brew install --verbose --build-bottle ./*.rb
+  - brew test ngt
